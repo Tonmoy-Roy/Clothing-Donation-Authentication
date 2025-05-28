@@ -1,14 +1,18 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link, NavLink } from 'react-router-dom';
+import { AuthContext } from '../AuthProvider/AuthProvider';
 
 const Navbar = () => {
+    const { user, signoutUser } = useContext(AuthContext); {/*user er vitor registration er sob info ache*/ }
+    console.log(user);
     const links = <>
-        <li><NavLink>Home</NavLink></li>
-        <li><NavLink>Register</NavLink></li>
+        <li><NavLink to="/">Home</NavLink></li>
+        <li><NavLink to="/products">Products</NavLink></li>
+        <li><NavLink to="/register">Register</NavLink></li>
         <li><NavLink to="/about">About</NavLink></li>
     </>
     return (
-        <div className="navbar shadow-sm  text-white bg-gray-800">
+        <div className="navbar shadow-sm  text-white bg-gray-800 mb-5">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -21,7 +25,6 @@ const Navbar = () => {
                         {links}
                     </ul>
                 </div>
-                {/* <a className="btn btn-ghost text-xl">Clothing Donation</a> */}
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
@@ -29,7 +32,20 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <button className="btn btn-primary relative">Login</button>
+                {
+                    user && user.email ?
+                        <div className='md:flex mr-[8vw] md:w-[10vw]'>
+                            <div className='mt-3 mr-3'>
+                                <p className='text-green-600 font-bold relative'>{user.displayName}</p>
+                            </div>
+                            <div className='mt-3'>
+                                <img className='md:w-[5vw] md:h-[8vh] rounded-full relative' src={user.photoURL} alt="" />
+                            </div>
+                        </div> : ""
+                }
+                {
+                    user && user.email ? (<Link to="/login" onClick={signoutUser} className='btn btn-primary relative'>Logout</Link>) : (<Link to="/login" className='btn btn-primary relative'>Login</Link>)
+                }
             </div>
         </div>
     );

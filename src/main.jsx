@@ -10,6 +10,9 @@ import Root from './components/Root/Root.jsx';
 import Error from './components/Error/Error.jsx';
 import Home from './components/Home/Home.jsx';
 import About from './components/About/About.jsx';
+import Register from './components/Register/Register.jsx';
+import Login from './components/Login/Login.jsx';
+import AuthProvider from './components/AuthProvider/AuthProvider.jsx';
 
 const router = createBrowserRouter([
   {
@@ -24,13 +27,23 @@ const router = createBrowserRouter([
       {
         path: "/about",
         element: <About></About>,
-      }
+      },
+      {
+        path: "/register",
+        element: <Register></Register>,
+      },
+      {
+        path: "/login",
+        element: <Login></Login>,
+      },
     ]
   },
 ]);
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </StrictMode>,
 )
