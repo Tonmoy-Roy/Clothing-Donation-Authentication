@@ -5,6 +5,8 @@ import auth from '../../firebase.config';
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null); {/*user ache kina check krtese*/ }
+    const [loading, setLoading] = useState(true); {/*true" means: "I'm still checking!*/ }
+
     function createUser(email, password) {
         return createUserWithEmailAndPassword(auth, email, password);
     }
@@ -14,20 +16,22 @@ const AuthProvider = ({ children }) => {
     }
 
     function updateUser(updateduser) {
-        return updateProfile(auth.currentUser,updateduser );
+        return updateProfile(auth.currentUser, updateduser);
     }
 
-    function signoutUser(){
+    function signoutUser() {
         return signOut(auth);
     }
 
     const authinfo = {
-        user, createUser, signinUser, updateUser, signoutUser, 
+        user, loading, createUser, signinUser, updateUser, signoutUser,
     }
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
+            setLoading(false); {/*false" means: "Check is done, I know the user's status now.*/ }
+
         })
         return unsubscribe;
     }, [])

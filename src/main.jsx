@@ -13,6 +13,9 @@ import About from './components/About/About.jsx';
 import Register from './components/Register/Register.jsx';
 import Login from './components/Login/Login.jsx';
 import AuthProvider from './components/AuthProvider/AuthProvider.jsx';
+import PrivateProduct from './components/PrivateProduct/PrivateProduct.jsx';
+import Products from './components/Products/Products.jsx';
+
 
 const router = createBrowserRouter([
   {
@@ -23,6 +26,14 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
+      },
+      {
+        path: "/products",
+        element: (
+          <PrivateProduct>
+            <Products/> {/* <Products /> is passed as children to PrivateProduct. */}
+          </PrivateProduct>
+        ),
       },
       {
         path: "/about",
