@@ -1,13 +1,14 @@
 import React from 'react';
 import Navbar from '../Navbar/Navbar';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import Home from '../Home/Home';
 
 const Root = () => {
+    const location = useLocation();
+    const isHome = location.pathname === '/';
     return (
-        <div>
+        <div className={isHome ? 'home-bg' : ''}>
             <Navbar></Navbar>
-            <Home></Home>
             <Outlet></Outlet>
         </div>
     );

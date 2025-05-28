@@ -1,33 +1,10 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
-body {
-  position: relative;
-  background-image: url('./assets/bgimg.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  margin: 0;
+  padding: 0;
+  width: 100%;           /* <-- changed from 100vw to 100% */
   min-height: 100vh;
-  /* Ensure content is above the overlay */
-  z-index: 0;
-}
-
-/* App.css */
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: -1;
-  /* Keep this at -1 */
-  pointer-events: none;
+  box-sizing: border-box;
+  background: #fff;
 }
 
 .logo {
