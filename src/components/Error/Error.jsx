@@ -1,9 +1,8 @@
-import React from 'react';
 
 const Error = () => {
     return (
-        <div>
-            <p className='flex justify-center items-center font -bold'>Page not found !</p>
+        <div className='text-center'>
+            <p className='font-bold text-3xl'>Page not found !</p>
         </div>
     );
 };
