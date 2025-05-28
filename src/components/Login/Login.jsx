@@ -33,9 +33,9 @@ const Login = () => {
                         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
                             <div className="card-body md:h-[40vh]">
                                 <fieldset className="fieldset">
-                                    {
+                                    {/* {
                                         success && <p className='text-green-600 font-bold'>Login is Succesfull</p>
-                                    }
+                                    } */}
                                     {
                                         error1 && <p className='text-red-600'>Please enter correct Email & Password !</p>
                                     }

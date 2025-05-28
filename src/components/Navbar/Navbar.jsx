@@ -7,8 +7,10 @@ const Navbar = () => {
     console.log(user);
     const links = <>
         <li><NavLink to="/">Home</NavLink></li>
+        {
+            user && user.email ? "" : (<li><NavLink to="/register">Register</NavLink></li>)
+        }
         <li><NavLink to="/products">Products</NavLink></li>
-        <li><NavLink to="/register">Register</NavLink></li>
         <li><NavLink to="/about">About</NavLink></li>
     </>
     return (

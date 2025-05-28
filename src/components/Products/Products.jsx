@@ -1,9 +1,18 @@
-import React from 'react';
+import { useEffect, useState } from "react";
+import Product from "../Product/Product";
 
 const Products = () => {
+    const [Products, setProducts] = useState([]);
+    useEffect(()=>{
+        fetch('clothdata.json')
+        .then(res=>res.json())
+        .then(data=>setProducts(data))
+    },[])
     return (
-        <div>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores ratione totam amet. Quod repellat voluptates reiciendis dolore. Eius nostrum asperiores vitae. Praesentium quam quas, inventore error maxime laudantium voluptatum nobis sed nesciunt esse sint ab impedit vitae odio quaerat. Consequatur veritatis nam quidem corrupti placeat impedit magnam nemo vero ad?</p>
+        <div className="grid md:grid-cols-3 gap-20 p-5">
+             {
+                Products.map(product=> <Product product={product}></Product>)
+             }
         </div>
     );
 };

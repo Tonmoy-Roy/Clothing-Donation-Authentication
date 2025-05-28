@@ -15,6 +15,7 @@ import Login from './components/Login/Login.jsx';
 import AuthProvider from './components/AuthProvider/AuthProvider.jsx';
 import PrivateProduct from './components/PrivateProduct/PrivateProduct.jsx';
 import Products from './components/Products/Products.jsx';
+import ProductDetails from './components/ProductDetails/ProductDetails.jsx';
 
 
 const router = createBrowserRouter([
@@ -31,7 +32,7 @@ const router = createBrowserRouter([
         path: "/products",
         element: (
           <PrivateProduct>
-            <Products/> {/* <Products /> is passed as children to PrivateProduct. */}
+            <Products /> {/* <Products /> is passed as children to PrivateProduct. */}
           </PrivateProduct>
         ),
       },
@@ -46,6 +47,11 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login></Login>,
+      },
+      {
+        path: "/productdetails/:donation_id",
+        element: <ProductDetails></ProductDetails>,
+        loader: () => fetch('/clothdata.json').then(res => res.json())
       },
     ]
   },
