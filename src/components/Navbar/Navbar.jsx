@@ -7,11 +7,11 @@ const Navbar = () => {
     console.log(user);
     const links = <>
         <li><NavLink to="/">Home</NavLink></li>
+        <li><NavLink to="/products">Products</NavLink></li>
+        <li><NavLink to="/about">About</NavLink></li>
         {
             user && user.email ? "" : (<li><NavLink to="/register">Register</NavLink></li>)
         }
-        <li><NavLink to="/products">Products</NavLink></li>
-        <li><NavLink to="/about">About</NavLink></li>
     </>
     return (
         <div className="navbar shadow-sm  text-white bg-gray-800 mb-5">

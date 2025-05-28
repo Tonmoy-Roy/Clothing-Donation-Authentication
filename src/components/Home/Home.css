@@ -3,7 +3,7 @@
     min-height: 100vh;
     width: 100%;
     /* <-- changed from 100vw to 100% */
-    background-image: url('../../assets/bgimg.jpg');
+    background-image: url('/bgimg.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
